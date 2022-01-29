@@ -8,23 +8,55 @@ class Webagr extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      infoWindows: Array(9).fill("infoWindow"),
+      infoWindows: Array(9).fill("infoWindowNest"),
       content: Array(9).fill("null"),
-      search: ""
+      search: "",
+      alertText: "",
+      clearInfoWindowId: null
     }
+    this.handleClear = this.handleClear.bind(this);
   }
-  handleClick = props => {
+  handleClear(i) {
+    const infoWindows = this.state.infoWindows.slice()
+    const content = this.state.content.slice()
+  
+    infoWindows[i] = "infoWindowNest"
+    content[i] = ""
+
+    this.setState({infoWindows: infoWindows})
+    this.setState({content: content})
+  }
+  handleSubmit = props => {
     const infoWindows = this.state.infoWindows.slice()
     const content = this.state.content.slice()
 
-    infoWindows[0] = "infoWindowBusy"
-    content[0] = this.state.search
+    let i = 0
+    while(true) {
+      if (infoWindows[i] === "infoWindowNest") {
+        infoWindows[i] = "infoWindowNestBusy"
+        content[i] = this.state.search
+        break
+      }
+      if (i === 8) {
+        this.setState({alertText: "Limit on parallel feeds is exceeded"})
+        break
+      }
+      i++
+    }
     
     this.setState({infoWindows: infoWindows})
     this.setState({content: content})
   }
   onChange = (e) => {
     this.setState({search: e.target.value})
+  }
+  renderInfoWindow(i) {
+    return (
+      <InfoWindow
+        busy={this.state.infoWindows[i]}
+        content={this.state.content[i]}
+      />
+    )
   }
   render() {
     return (
@@ -33,14 +65,75 @@ class Webagr extends React.Component {
           <Search 
             onChange={this.onChange}
             search={this.state.search}
-            onClick={() => this.handleClick()}
+            onSubmit={() => this.handleSubmit()}
+          />
+        </div>
+        <div className='alert'>
+          <Alert 
+            alertText={this.state.alertText}
           />
         </div>
         <div className='frame'>
-          <Frame 
-          infoWindowsStatus={this.state.infoWindows}
-          infoWindowsContent={this.state.content}
-          />
+          <div className='frameRow'>
+            <div className={this.state.infoWindows[0]}>
+              {this.renderInfoWindow(0)}
+              <button className='clearBtn' onClick={() => {this.handleClear(0)}}>
+                X
+              </button>
+            </div>
+            <div className={this.state.infoWindows[1]}>
+              {this.renderInfoWindow(1)}
+              <button className='clearBtn' onClick={() => {this.handleClear(1)}}>
+                X
+              </button>
+            </div>
+            <div className={this.state.infoWindows[2]}>
+              {this.renderInfoWindow(2)}
+              <button className='clearBtn' onClick={() => {this.handleClear(2)}}>
+                X
+              </button>            
+            </div>
+          </div>
+          <div className='frameRow'>
+            <div className={this.state.infoWindows[3]}>
+              {this.renderInfoWindow(3)}
+              <button className='clearBtn' onClick={() => {this.handleClear(3)}}>
+                X
+              </button>
+            </div>
+            <div className={this.state.infoWindows[4]}>
+              {this.renderInfoWindow(4)}
+              <button className='clearBtn' onClick={() => {this.handleClear(4)}}>
+                X
+              </button>
+            </div>
+            <div className={this.state.infoWindows[5]}>
+              {this.renderInfoWindow(5)}
+              <button className='clearBtn' onClick={() => {this.handleClear(5)}}>
+                X
+              </button>
+            </div>
+            </div>
+            <div className='frameRow'>
+            <div className={this.state.infoWindows[6]}>
+              {this.renderInfoWindow(6)}
+              <button className='clearBtn' onClick={() => {this.handleClear(6)}}>
+                X
+              </button>
+            </div>
+            <div className={this.state.infoWindows[7]}>
+              {this.renderInfoWindow(7)}
+              <button className='clearBtn' onClick={() => {this.handleClear(7)}}> 
+                X
+              </button>
+            </div>
+            <div className={this.state.infoWindows[8]}>
+              {this.renderInfoWindow(8)}
+              <button className='clearBtn' onClick={() => {this.handleClear(8)}}>
+                X
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     )
@@ -52,7 +145,7 @@ class Search extends React.Component {
     return (
       <div className='searchBar'>
         <input type="text" onChange={this.props.onChange} value={this.props.search}/> 
-        <button className='searchBtn' onClick={this.props.onClick}>
+        <button className='searchBtn' onClick={this.props.onSubmit}>
           Search
         </button>
       </div>
@@ -60,44 +153,20 @@ class Search extends React.Component {
   }
 }
 
-class Frame extends React.Component {
-  renderInfoWindow(i) {
-    return (
-      <InfoWindow
-        busy={this.props.infoWindowsStatus[i]}
-        content={this.props.infoWindowsContent[i]}
-      />
-    )
-  }
-  render() {
-    return (
-      <div className='frame'>
-        <div className='frameRow'>
-          {this.renderInfoWindow(0)}
-          {this.renderInfoWindow(1)}
-          {this.renderInfoWindow(2)}
-        </div>
-        <div className='frameRow'>
-          {this.renderInfoWindow(3)}
-          {this.renderInfoWindow(4)}
-          {this.renderInfoWindow(5)}
-        </div>
-        <div className='frameRow'>
-          {this.renderInfoWindow(6)}
-          {this.renderInfoWindow(7)}
-          {this.renderInfoWindow(8)}
-        </div>
-      </div>
-    )
-  }
-}
-
 function InfoWindow(props) {
   return (
-    <div className={props.busy}>
+    <div className="infoWindowBusy">
       <p>
         {props.content}
       </p>
+    </div>
+  )
+}
+
+function Alert(props) {
+  return (
+    <div className='alertMessage'>
+      {props.alertText}
     </div>
   )
 }

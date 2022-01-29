@@ -15,24 +15,36 @@ code {
 .frame {
   background-color: aquamarine;
   width: 600px;
-  height: 600px;
+  height: 700px;
 }
 
-
-.infoWindow {
+.infoWindowNest {
   background-color: white;
-  width: 198px;
-  height: 198px;
-  float: left;
+  width: 190px;
+  height: 220px;
+  float:left;
   border-width: 1px;
   border-style: solid;
   visibility: hidden;
 }
+.infoWindowNestBusy {
+  background-color: white;
+  width: 190px;
+  height: 220px;
+  float:left;
+  border-width: 1px;
+  border-style: solid;
+}
 .infoWindowBusy {
   background-color: white;
-  width: 198px;
-  height: 198px;
+  width: 190px;
+  height: 190px;
   float: left;
   border-width: 1px;
   border-style: solid;
+}
+
+.clearBtn {
+  background-color: red;
+  color: white;
 }
