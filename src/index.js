@@ -23,6 +23,17 @@ class Webagr extends React.Component {
     infoWindows[i] = "infoWindowNest"
     content[i] = ""
 
+    
+    for (let j = i + 1; j < 9; j++) {
+      if (infoWindows[j] == "infoWindowNestBusy") {
+
+        infoWindows[j-1] = "infoWindowNestBusy"
+        content[j-1] = content[j]
+        
+        infoWindows[j] = "infoWindowNest"
+        content[j] = ""
+      }
+    }
     this.setState({infoWindows: infoWindows})
     this.setState({content: content})
   }
