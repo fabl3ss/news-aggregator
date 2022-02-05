@@ -1,0 +1,6 @@
+docker run --name postgres-goauth -p 5432:5432 -e POSTGRES_PASSWORD=password -e POSTGRES_USER=user -e POSTGRES_DB=goauth-db postgres
+go get -tags 'postgres' -u github.com/golang-migrate/migrate
+migrate create -ext sql -dir ./schema -seq init
+migrate -path ./schema -database postgres://user:password@localhost:5432/goauth-db?sslmode=disable up
+go get -u github.com/joho/godotenv
+go get -u github.com/sirupsen/logrus
