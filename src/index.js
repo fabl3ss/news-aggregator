@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import axios from "axios"
 import reportWebVitals from './reportWebVitals';
 
 class Webagr extends React.Component {
@@ -12,7 +12,8 @@ class Webagr extends React.Component {
       content: Array(9).fill("null"),
       search: "",
       alertText: "",
-      clearInfoWindowId: null
+      submitAt: "",
+      getText: ""
     }
     this.handleClear = this.handleClear.bind(this);
   }
@@ -57,6 +58,19 @@ class Webagr extends React.Component {
     
     this.setState({infoWindows: infoWindows})
     this.setState({content: content})
+
+    // ***************************************************************
+    const article = { title: 'React PUT Request Example' };
+    const headers = { 
+      'keyword': this.state.search
+    };
+    //Отсылаем запрос и сразу слушаем ответ
+    axios.put('https://reqres.in/api/articles/1', { headers })
+      .then(response => this.setState({ submitAt: response.data.updatedAt }));
+    axios.get('https://reqres.in/api/articles/1').then(response => {
+      this.setState({getText: response.text})
+    })
+    // ***************************************************************
   }
   onChange = (e) => {
     this.setState({search: e.target.value})
