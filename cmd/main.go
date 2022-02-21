@@ -2,7 +2,10 @@ package main
 
 import (
 	"context"
+	"errors"
+	"net/http"
 	"os"
+	"time"
 
 	"os/signal"
 	"syscall"
@@ -48,8 +51,8 @@ func main() {
 
 	srv := new(goauth.Server)
 	go func() {
-		if err := srv.Run(viper.GetString("port"), handlers.InitRoutes()); err != nil {
-			logrus.Fatalf("Error occured while running http server: %s", err.Error())
+		if err := srv.Run(viper.GetString("port"), handlers.InitRoutes()); err != nil && errors.Is(err, http.ErrServerClosed) {
+			logrus.Errorf("Error occured while running http server: %s", err.Error())
 		}
 	}()
 	logrus.Print("App started up")
@@ -60,7 +63,10 @@ func main() {
 
 	logrus.Print("App shutting down")
 
-	if err := srv.Shutdown(context.Background()); err != nil {
+	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+	defer cancel()
+
+	if err := srv.Shutdown(ctx); err != nil {
 		logrus.Errorf("Error occured on server shutting down: %s", err.Error())
 	}
 	if err := db.Close(); err != nil {
