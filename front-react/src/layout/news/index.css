@@ -1,0 +1,212 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+body {
+    background-color: #282c34;
+    margin: 0;
+    font-family: 'Roboto', serif;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.frame {
+    background-color: #31353f;
+    width: 72ch;
+    height: 63ch;
+    margin: auto;
+    border-radius: 13px;
+    font-family: 'Roboto', serif;
+}
+
+.searchBtn {
+    border-radius: 0 10px 10px 0;
+    font-size: 1.8rem;
+}
+
+.searchInput {
+    margin-top: 5%;
+    color: #000;
+    background-color: #ffffff;
+    border-radius: 10px 0 0 10px;
+    font-size: 1.8rem;
+}
+
+.infoWindowNest {
+    background-color: white;
+    width: 24ch;
+    height: 21ch;
+    float: left;
+    border-width: 1px;
+    border-style: solid;
+    visibility: hidden;
+    font-family: 'Roboto', serif;
+}
+
+.infoWindowNestBusy {
+    background-color: white;
+    width: 23ch;
+    height: 20ch;
+    float: left;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 13px;
+    margin: 4px 0px 4px 7px;
+    padding-top: 3px;
+    font-family: 'Roboto', serif;
+}
+
+.infoWindowBusy p {
+    font-family: 'Roboto', serif;
+    font-size: 0.9rem;
+    background-color: white;
+    width: 23ch;
+    height: 10ch;
+    float: left;
+    text-align: left;
+    margin-left: 1.5ch;
+    margin-top: 1ch;
+    margin-right: 1.5ch;
+    border-width: 0px;
+    border-style: solid;
+    border-radius: 20px;
+}
+
+.form-holder {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    max-height: 10vh;
+}
+
+.form-holder .form-content {
+    position: relative;
+    text-align: center;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    align-items: center;
+    padding: 60px;
+}
+
+.form-content .form-items {
+    font-family: 'Lato', sans-serif;
+    border: 3px solid #fff;
+    padding: 40px;
+    display: inline-block;
+    width: 100%;
+    min-width: 540px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    text-align: left;
+    -webkit-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+}
+
+.form-content h3 {
+    color: #fff;
+    text-align: left;
+    font-size: 28px;
+    font-weight: 300;
+    margin-bottom: 5px;
+    font-family: 'Roboto', serif;
+}
+
+.form-content h3.form-title {
+    font-family: 'Roboto', serif;
+    margin-bottom: 30px;
+}
+
+.form-content p {
+    font-family: 'Roboto', serif;
+    color: #fff;
+    text-align: left;
+    font-size: 17px;
+    font-weight: 300;
+    line-height: 20px;
+    margin-bottom: 30px;
+}
+
+
+.form-content label, .was-validated .form-check-input:invalid~.form-check-label, .was-validated .form-check-input:valid~.form-check-label{
+    color: #fff;
+}
+
+.form-content input[type=text], .form-content input[type=password], .form-content input[type=email], .form-content select {
+    font-family: 'Roboto', serif;
+    width: 100%;
+    padding: 9px 20px;
+    text-align: left;
+    border: 0;
+    outline: 0;
+    border-radius: 6px;
+    background-color: #fff;
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: #8D8D8D;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    margin-top: 16px;
+}
+
+.form-content textarea {
+    position: static !important;
+    width: 100%;
+    padding: 8px 20px;
+    border-radius: 6px;
+    text-align: left;
+    background-color: #fff;
+    border: 0;
+    font-size: 15px;
+    font-weight: 300;
+    color: #8D8D8D;
+    outline: none;
+    resize: none;
+    height: 120px;
+    -webkit-transition: none;
+    transition: none;
+    margin-bottom: 14px;
+}
+
+.form-content textarea:hover, .form-content textarea:focus {
+    border: 0;
+    background-color: #ebeff8;
+    color: #8D8D8D;
+}
+
+.mv-up{
+    margin-top: -9px !important;
+    margin-bottom: 8px !important;
+}
+
+.invalid-feedback{
+    color: #ff606e;
+}
+
+.valid-feedback{
+    color: #2acc80;
+}
+
+.btn-primary{
+    font-family: 'Roboto', serif;
+    font-weight: 300;
+    background-color: #0672e6;
+    outline: none;
+    border: 0px;
+    width: 12ch;
+    box-shadow: none;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active{
+    background-color: #0860bf;
+    outline: none !important;
+    border: none !important;
+    box-shadow: none;
+}

@@ -1,0 +1,8 @@
+port: "5002"
+
+db:
+  host: "10.5.0.2"
+  port: "5432"
+  username: "user"
+  dbname: "goauth-db"
+  sslmode: "disable"

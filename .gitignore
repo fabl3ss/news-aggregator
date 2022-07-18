@@ -1,1 +1,3 @@
 *.docx
+neural/__pycache__/
+front-react/node_modules/
