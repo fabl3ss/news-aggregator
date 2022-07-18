@@ -6,3 +6,6 @@ Then the data is transmitted via http request to the server with a neural networ
 The server with the neural network is written in *Python* using *FastAPI*. Interaction with the user is implemented using *React JS* GUI. 
 The project follows the pattern of clean code and microservices architecture.  
 Contributors: [Mevnk](https://github.com/Mevnk), [fabl3ss](https://github.com/fabl3ss), [timofeyka25](https://github.com/timofeyka25)
+
+### Execution example
+<img align="center" width="70%" height="70%" src="http://drive.google.com/uc?export=view&id=1jxbugm7JJHdJSHVgNtfYI1wTA22XfJ2A">
