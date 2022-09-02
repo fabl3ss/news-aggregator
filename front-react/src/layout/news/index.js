@@ -40,7 +40,6 @@ function News() {
     parserText: "",
   });
   const { user } = useAuth();
-  console.log("myuasdasd", user);
   if (!user || !user.token || user.token === "") {
     Swal.fire({
       icon: "error",
@@ -92,7 +91,6 @@ function News() {
       };
 
       let first15 = props.content.split(" ").slice(0, 15).join(" ");
-      console.log("index=", props.index);
       return (
         <div>
           <Modal
@@ -153,8 +151,6 @@ function News() {
   };
 
   const handleSubmit = async () => {
-    console.log("submiiiiit!", kwords);
-
     const data = {
       kwords: kwords.split(" "),
       language: language,
@@ -163,7 +159,6 @@ function News() {
     };
 
     await ParserApi.ProcessNews(data).then((response) => {
-      console.log("in parser");
       const infoWindowsCopy = state.infoWindows.slice();
       let i = 0;
       while (true) {
@@ -184,12 +179,10 @@ function News() {
         parserText: response.data,
         infoWindows: infoWindowsCopy,
       });
-      console.log("after parser", state.infoWindows);
     });
   };
 
   const renderInfoWindow = (i) => {
-    console.log("suka", state.infoWindows[i]);
     return (
       <InfoWindow
         busy={state.infoWindows[i]}

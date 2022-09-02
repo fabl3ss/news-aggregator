@@ -2,7 +2,6 @@ import axios from "axios";
 
 export default class AuthApi {
   static Login = (data) => {
-    console.log("login-data", data);
     return axios.post(`${base}/sign-in`, data);
   };
 

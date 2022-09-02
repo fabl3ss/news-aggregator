@@ -98,10 +98,8 @@ export default function SignIn() {
         password,
       });
       if (response.data && response.data.success === false) {
-        console.log(response.data);
         return setError(response.data.msg);
       }
-      console.log(response.data);
       return setProfile(response);
     } catch (err) {
       if (err.response) {
