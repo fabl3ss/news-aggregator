@@ -4,8 +4,7 @@ import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import { AuthProvider } from "./auth-context/auth.context";
 
-let user = localStorage.getItem("user");
-user = JSON.parse(user);
+let user = JSON.parse(localStorage.getItem("user"));
 
 ReactDOM.render(
   <AuthProvider userData={user}>

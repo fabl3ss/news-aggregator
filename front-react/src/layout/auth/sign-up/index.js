@@ -60,9 +60,7 @@ export default function SignUp() {
     }
   };
 
-  const style = {
-    margin: "15px 0",
-  };
+  const style = {margin: "15px 0"};
 
   return (
     <div className="login-container">

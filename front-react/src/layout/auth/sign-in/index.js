@@ -72,7 +72,6 @@ export default function SignIn() {
 
   const { user } = useAuth();
   const { setUser } = useAuth();
-
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(undefined);
@@ -118,9 +117,7 @@ export default function SignIn() {
     return navigate("/news");
   };
 
-  const style = {
-    margin: "15px 0",
-  };
+  const style = { margin: "15px 0"};
   return (
     <div>
       {user && jwt_decode(user.token).exp > Date.now() / 1000 ? (
