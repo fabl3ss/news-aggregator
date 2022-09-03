@@ -4,8 +4,8 @@ go 1.17
 
 require (
 	github.com/gin-contrib/cors v1.3.1
-	github.com/gin-contrib/static v0.0.1
 	github.com/gin-gonic/gin v1.7.7
+	github.com/golang/mock v1.6.0
 	github.com/joho/godotenv v1.4.0
 	github.com/pkg/errors v0.9.1
 	github.com/stretchr/testify v1.8.0
@@ -27,7 +27,7 @@ require (
 	github.com/stretchr/objx v0.4.0 // indirect
 	github.com/ugorji/go/codec v1.1.7 // indirect
 	golang.org/x/crypto v0.0.0-20200622213623-75b288015ac9 // indirect
-	golang.org/x/sys v0.0.0-20200116001909-b77594299b42 // indirect
+	golang.org/x/sys v0.0.0-20210510120138-977fb7262007 // indirect
 	gopkg.in/yaml.v2 v2.2.8 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
