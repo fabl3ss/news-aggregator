@@ -1,5 +1,5 @@
 ## News Aggregator
-#### A startup that created for filtering and displaying of personalized information to the user from news resources.  
+#### A project that created for filtering and displaying of personalized information to the user from news resources.  
 The created application can search for the latest news by the keyword entered, using the *newsdata.io* API. 
 The resulting data is processed by a backend written in *Go*. 
 Then the data is transmitted via http request to the summarizer server, which processes the input text and returns an abbreviated and concise excerpt. 
